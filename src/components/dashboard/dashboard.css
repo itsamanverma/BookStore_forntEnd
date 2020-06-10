@@ -1,0 +1,43 @@
+.dashboard-container{
+    display: flex;
+    height: 100vh;
+}
+#appbar{
+    display: flex;
+    width: 100%;
+    background-color: rgb(114, 13, 13);
+    height: 50px;
+    padding: 5px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+.icon-search{
+    display: flex;
+    align-items: center;
+   
+}
+.book{
+    width: 45px;
+    height: 45px;
+}
+#search{
+    height: 25px;
+    width: 300px;
+    border-radius: 3px;
+    padding-left: 10px;
+    outline: none;
+    margin-left: 50px;
+    border-radius: 8px;
+}
+#add-shoping{
+    width: 40px;
+    height: 40px;
+    /* margin: 130%; */
+}
+
+.Bookstore{
+    margin-left: 5px;
+    font-weight: 300;
+}

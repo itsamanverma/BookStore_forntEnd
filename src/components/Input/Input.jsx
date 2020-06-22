@@ -19,15 +19,18 @@ export default class Input extends Component {
     render() {
         return (
             <TextField 
-                className=''
+                className='label'
+                id={this.props.id}
                 name={this.props.name}
                 type={this.props.type}
                 placeholder={this.props.placeholder}
+                label={this.props.label}
                 onChange={this.sendDataToParent}
                 fullWidth
                 color={this.state.color}
                 required={this.props.required}
             />
+
         );
     }
 }

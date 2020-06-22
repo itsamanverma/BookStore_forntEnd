@@ -9,11 +9,12 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: '',
       firstname: '',
       lastname: '',
-      email: '',
       password: '',
-      rpassword: '',
+      dob: '',
+      region:'',
       isValidated: false,
       error: {},
     }
@@ -41,11 +42,12 @@ class Register extends Component {
    */
   validate(event) {
     var error = {
-      firstname: '',
-      lastname: '',
       email: '',
       password: '',
-      rpassword: '',
+      firstname: '',
+      lastname: '',
+      dob: '',
+      region: '',
     };
     var isvalid = true;
     // if(event.target.name==='firstname'){
@@ -88,11 +90,6 @@ class Register extends Component {
       isvalid = false;
     }
     //}
-    //else if(event.target.name==='rpassword'){
-    if ((this.state.rpassword === this.state.password) === false) {
-      error.rpassword = 'Passwords Didnt match'
-      isvalid = false;
-    }
     //}
     this.setState({
       error: error,
@@ -118,11 +115,12 @@ class Register extends Component {
 
     if (this.validate()) {
       const data = {
+        email: this.state.email,
         firstname: this.state.firstname,
         lastname: this.state.lastname,
-        email: this.state.email,
         password: this.state.password,
-        rpassword: this.state.password,
+        dob: this.state.dob,
+        region: this.state.region,
       }
       userService.register(data).then(res => {
         if (res.status === 210) {
@@ -153,6 +151,10 @@ class Register extends Component {
         </Typography>
               <div className='form'>
                 <div>
+                  <Input name={'email'} type={'Email'} placeholder={'Enter Your Email'} label={'Email'} onChange={this.getDataFromInput} required={true} />
+                  <div className='error'>{this.state.error.email}</div>
+                </div>
+                <div>
                   <Input name={'firstname'} type={'text'} placeholder={'Enter First Name'} label={'First name'} onChange={this.getDataFromInput} />
                   <div className='error'>{this.state.error.firstname}</div>
                 </div>
@@ -161,17 +163,14 @@ class Register extends Component {
                   <div className='error'>{this.state.error.lastname}</div>
                 </div>
                 <div>
-                  <Input name={'email'} type={'Email'} placeholder={'Enter Your Email'} label={'Email'} onChange={this.getDataFromInput} required={true} />
-                  <div className='error'>{this.state.error.email}</div>
-                </div>
-                <div>
                   <Input name={'password'} type={'password'} placeholder={'Enter Password'} label={'PassWord'} onChange={this.getDataFromInput} />
                   <div className='error'>{this.state.error.password}</div>
                 </div>
                 <div>
-                  <Input color={'error'} name={'rpassword'} type={'password'} placeholder={'Confirm PassWord'} label={'Confirm Password'} onChange={this.getDataFromInput} required={true} />
-                  <div className='error'>{this.state.error.rpassword}</div>
+                  <Input name={'dob'} type={'date'} placeholder={'dob'} label={'dob'} onChange={this.getDataFromInput} />
+                  <div className='error'>{this.state.error.dob}</div>
                 </div>
+                
                 <div id='register-btn-div'>
                   <Button onClick={this.handleClick} className='register-btn' variant="contained" color="primary" type="submit">
                     Submit
@@ -180,7 +179,7 @@ class Register extends Component {
                 <span><Typography id='reg-text-login'>Already have an account <a href="/login">Login</a></Typography></span>
               </div>
             </div>
-                    
+
           </CardContent>
         </Card>
       </div>

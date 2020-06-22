@@ -18,7 +18,6 @@ class App extends Component {
                 </MuiThemeProvider>
                 </div>
             </Router>
-            
         );
     }
 }

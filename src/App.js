@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
-import Dashboard from './components/dashboard/dashboard';
+import DashboardPage from './Pages/DashboardPage';
 
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
         return (
             <Router>
                 <Switch>
-                    <Route path='/' component={Dashboard}/>
+                    <Route path='/' component={DashboardPage}/>
                 </Switch>
             </Router>
             

@@ -170,7 +170,18 @@ class Register extends Component {
                   <Input name={'dob'} type={'date'} placeholder={'dob'} label={'dob'} onChange={this.getDataFromInput} />
                   <div className='error'>{this.state.error.dob}</div>
                 </div>
-                
+                <div>    
+                        <label htmlFor="region">City</label>    
+                        <select name="region"    
+                            value={this.state.region}    
+                            onChange={this.getDataFromInput} >    
+                            <option value="select">--Select--</option>    
+                            <option value="Pune">Pune</option>    
+                            <option value="Mumbai">Mumbai</option>    
+                            <option value="Hyderabad">Hyderabad</option> 
+                            <option value="Bangalore">B</option>   
+                        </select>      
+                </div>    
                 <div id='register-btn-div'>
                   <Button onClick={this.handleClick} className='register-btn' variant="contained" color="primary" type="submit">
                     Submit

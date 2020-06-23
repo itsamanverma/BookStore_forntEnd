@@ -94,8 +94,8 @@ const theme = createMuiTheme({
     }
 })
 
-{/**  function written outside as this needs to render at once.
-if it is inside render or inside class it will render again and again will consume more memory.*/}
+/**  function written outside as this needs to render at once.
+if it is inside render or inside class it will render again and again will consume more memory.*/
 
 function searchingFor(search) {
     return function (x) {

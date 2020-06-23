@@ -25,6 +25,7 @@ class Dashboard extends Component {
                         <img className="book" src={book} alt="book_icon" />
                         <label className="Bookstore">BookStore</label>
                         <input id='search' type="text" placeholder='Search here...' onChange={this._handleSeachBook.bind(this)} />
+                        <label className="Cart">Cart</label>
                     </div>
                     <div>
                         <img id="add-shoping" src={shoping} alt='add_shoping' />

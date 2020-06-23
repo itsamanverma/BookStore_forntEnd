@@ -125,10 +125,9 @@ export class Books extends Component {
             return (
                 <MuiThemeProvider theme={theme}>
                     <Card key={key.name} >
-                    <Tooltip title="ਪੰਜਾਬੀ ( ਜਿਸ ਨੂੰ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ Punjabi, ਗੁਰਮੁਖੀ ਵਿੱਚ ਪੰਜਾਬੀ ਅਤੇ, ਸ਼ਾਹਮੁਖੀ ਵਿੱਚ پنجابی ਵਾਂਗ ਲਿਖਿਆ ਜਾਦਾ ਹੈ।)
-                     ਭਾਰਤ ਅਤੇ ਪਾਕਿਸਤਾਨ ਦੇ ਪੰਜਾਬ ਸੂਬੇ ਦੀ ਭਾਸ਼ਾ ਹੈ। ਇਹ ਭਾਰਤੀ-ਇਰਾਨੀ ਵਰਗ ਦੇ ਵਿੱਚੋਂ ਭਾਰਤੀ-ਯੂਰਪ ਵਰਗ ਨਾਲ ਸਬੰਧਤ ਹੈ।
-                     ਇਸ ਤੋਂ ਇਲਾਵਾ ਪੰਜਾਬੀ ਸ਼ਬਦ ਨੂੰ ਪੰਜਾਬ ਨਾਲ ਸਬੰਧਤ ਕਿਸੇ ਵੀ ਚੀਜ਼ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ, ਜੋ ਕਿ ਪੰਜਾਬ ਜਾਂ ਪੰਜਾਬੀ ਨਾਲ ਸਬੰਧਤ ਹੋਵੇ,
-                     ਜਿਵੇਂ ਕਿ ਪੰਜਾਬੀ ਬੋਲਣ ਵਾਲਿਆਂ ਨੂੰ ਪੰਜਾਬੀ ਅਤੇ ਪੰਜਾਬੀ ਖੇਤਰ ਵਿੱਚ ਪੰਜਾਬੀ ਹੀ ਕਿਹਾ ਜਾਦਾ ਹੈ।" placement="top-start"> 
+                    <Tooltip title="The Help is a 2009 novel by American author Kathryn Stockett.
+                        The story is about African Americans working in white households in Jackson, Mississippi, during the early 1960s. 
+                        A USA Today article called it one of the 'summer sleeper hits'" placement="top-start"> 
                      <div className="image-c">
                          <img src={require(`../../${key.image}.jpg`)} alt="book" className="image-dimention"></img>
                      {!key.isAvailable && <span className="book-avaialability">OUT OF STOCK</span>}

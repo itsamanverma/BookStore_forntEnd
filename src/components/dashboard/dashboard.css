@@ -35,10 +35,15 @@
 #add-shoping{
     width: 40px;
     height: 40px;
-    /* margin: 130%; */
 }
 
 .Bookstore{
     margin-left: 5px;
     font-weight: 300;
+}
+
+.Cart {
+    margin-left: 45%;
+    font-weight: 300;
+
 }

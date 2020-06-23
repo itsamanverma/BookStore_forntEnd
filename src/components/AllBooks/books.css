@@ -1,0 +1,82 @@
+.books-header {
+    margin: 6% 10%;
+}
+.main-containt-title {
+    font-size: 29px;
+    font-weight: 500;
+    font-family: initial;
+    display: flex;
+}
+.title-row{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 18px;
+}
+span.item-lenght {
+    font-size: 14px;
+    color: #6e6d70;
+    margin: 11px 0px 0px 5px;
+}
+.all-cards {
+    display: flex;
+    margin: 2% 0%;
+    flex-wrap:wrap
+}
+.add-button {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 9px;
+}
+.fullwidth{
+    width: 100%;
+}
+.book-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+.author {
+    color: gray;
+    font-size: 11px;
+    padding: 2px 0px 9px 0px;
+}
+.price {
+    font-size: 15px;
+    font-weight: 700;
+}
+.book-info {
+    margin: 17px 13px;
+}
+.image-c {
+    display: flex;
+    justify-content: center;
+    background: #e2e2e3;
+    height: 59%;
+
+}
+.image-dimention{
+    width: 59%;
+    padding: 16px;
+}
+
+.book-avaialability {
+    background: #f0f0f1;
+    border: 1px solid #e2e2e3;
+    position: absolute;
+    margin-top: 7%;
+    width: 14%;
+    height: 4.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    opacity: 0.9;
+    font-weight: 600;
+}
+.content{
+    color: black;
+    z-index: 9999;
+    width: 35%;
+    border: 1px solid lightgray;
+    padding: 18px;
+    border-radius: 6px;
+}

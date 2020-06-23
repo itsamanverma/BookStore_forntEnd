@@ -179,7 +179,7 @@ class Register extends Component {
                             <option value="Pune">Pune</option>    
                             <option value="Mumbai">Mumbai</option>    
                             <option value="Hyderabad">Hyderabad</option> 
-                            <option value="Bangalore">B</option>   
+                            <option value="Bangalore">Bangalore</option>   
                         </select>      
                 </div>    
                 <div id='register-btn-div'>

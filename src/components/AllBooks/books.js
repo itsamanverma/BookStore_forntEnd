@@ -9,49 +9,58 @@ let booksArray = [{
     author: "Steve Krug",
     price: 1500,
     isAvailable: true,
-    image: 'assets/dont_make_me_think'
+    image: 'assets/dont_make_me_think',
+    title: "Don't Make Me Think is a book by Steve Krug about human–computer interaction and web usability. The book's premise is that a good software program or web site should let users accomplish their intended tasks as easily and directly as possible. Krug points out that people are good at satisficing, or taking the first available solution to their problem, so design should take advantage of this. "
 },
 {
     name: "The Help",
     author: "‎Kathryn Stockett",
     price: 1200,
     isAvailable: true,
-    image: 'assets/the_help'
+    image: 'assets/the_help',
+    title: "The Help is a 2009 novel by American author Kathryn Stockett.The story is about African Americans working in white households in Jackson, Mississippi, during the early 1960s. A USA Today article called it one of the 'summer sleeper hits'"
 },
 {
     name: "The Perception",
-    author: "Ashwini Pacharey",
+    author: "Aman Verma",
     price: 2000,
     isAvailable: false,
-    image: 'assets/the_perception'
+    image: 'assets/the_perception',
+    title: 'perception, in psychology, mental organization and interpretation of sensory information. The Gestalt psychologists studied extensively the ways in which people organize and select from the vast array of stimuli that are presented to them'
 },
 {
     name: "Attitude is Everything",
     author: "Rhonda Byrne",
     price: 4000,
     isAvailable: true,
-    image: `assets/attitude_is_everything`
+    image: `assets/attitude_is_everything`,
+    title: "Attitude is Everything is a book based on Jeff Keller's journey of being a motivational speaker. ... He decides to make a gradual transition and start working as a full-time motivational orator in 1992. This novel is divided into three parts, Success Begins in the Mind, Watch Your Words, and Heaven Helps Those Who Act"
+
 },
 {
     name: "The Help",
     author: "‎Kathryn Stockett",
     price: 1200,
     isAvailable: true,
-    image: 'assets/the_help'
+    image: 'assets/the_help',
+    title: "The Help is a 2009 novel by American author Kathryn Stockett.The story is about African Americans working in white households in Jackson, Mississippi, during the early 1960s. A USA Today article called it one of the 'summer sleeper hits'"
 },
 {
     name: "The Perception",
-    author: "Ashwini Pacharey",
+    author: "Aman Verma",
     price: 2000,
     isAvailable: false,
-    image: 'assets/the_perception'
+    image: 'assets/the_perception',
+    title: 'perception, in psychology, mental organization and interpretation of sensory information. The Gestalt psychologists studied extensively the ways in which people organize and select from the vast array of stimuli that are presented to them'
+
 },
 {
     name: "Attitude is Everything",
     author: "Rhonda Byrne",
     price: 4000,
     isAvailable: true,
-    image: `assets/attitude_is_everything`
+    image: `assets/attitude_is_everything`,
+    title: "Attitude is Everything is a book based on Jeff Keller's journey of being a motivational speaker. ... He decides to make a gradual transition and start working as a full-time motivational orator in 1992. This novel is divided into three parts, Success Begins in the Mind, Watch Your Words, and Heaven Helps Those Who Act"
 },
 ]
 
@@ -125,9 +134,7 @@ export class Books extends Component {
             return (
                 <MuiThemeProvider theme={theme}>
                     <Card key={key.name} >
-                    <Tooltip title="The Help is a 2009 novel by American author Kathryn Stockett.
-                        The story is about African Americans working in white households in Jackson, Mississippi, during the early 1960s. 
-                        A USA Today article called it one of the 'summer sleeper hits'" placement="top-start"> 
+                    <Tooltip title={key.title} placement="top-start"> 
                      <div className="image-c">
                          <img src={require(`../../${key.image}.jpg`)} alt="book" className="image-dimention"></img>
                      {!key.isAvailable && <span className="book-avaialability">OUT OF STOCK</span>}

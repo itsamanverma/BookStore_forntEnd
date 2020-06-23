@@ -58,7 +58,7 @@ let booksArray = [{
     name: "Attitude is Everything",
     author: "Rhonda Byrne",
     price: 4000,
-    isAvailable: true,
+    isAvailable: true,  
     image: `assets/attitude_is_everything`,
     title: "Attitude is Everything is a book based on Jeff Keller's journey of being a motivational speaker. ... He decides to make a gradual transition and start working as a full-time motivational orator in 1992. This novel is divided into three parts, Success Begins in the Mind, Watch Your Words, and Heaven Helps Those Who Act"
 },
@@ -120,6 +120,33 @@ export class Books extends Component {
             filter: "",
             booksArray: booksArray,
         }
+
+        this.sortByPriceAsc = this.sortByPriceAsc.bind(this);
+        this.sortByPriceDesc = this.sortByPriceDesc.bind(this); 
+    }
+
+    sortByPriceAsc=()=>{
+
+        let sortedbooksAsc;
+        sortedbooksAsc= this.state.booksArray.sort((a,b)=>{
+           return parseInt(a.price) - parseInt(b.price);
+        })
+
+        this.setState({
+            booksArray:sortedbooksAsc
+        })
+    }
+    
+    sortByPriceDesc=()=>{
+
+        let sortedbooksDesc;
+        sortedbooksDesc= this.state.booksArray.sort((a,b)=>{
+           return parseInt(b.price)  - parseInt(a.price);
+        })
+
+        this.setState({
+            booksArray:sortedbooksDesc
+        })
     }
 
     _handleSelectFilter = (event) => {
@@ -134,7 +161,7 @@ export class Books extends Component {
             return (
                 <MuiThemeProvider theme={theme}>
                     <Card key={key.name} >
-                    <Tooltip title={key.title} placement="top-start"> 
+                    <Tooltip title={key.title} placement="top-start" label='Book Detail'> 
                      <div className="image-c">
                          <img src={require(`../../${key.image}.jpg`)} alt="book" className="image-dimention"></img>
                      {!key.isAvailable && <span className="book-avaialability">OUT OF STOCK</span>}
@@ -161,7 +188,7 @@ export class Books extends Component {
             <div className="books-header">
                 <div className="title-row">
                     <div className="main-containt-title">
-                        Books <span className="item-lenght">({booksArray.length} item) </span>
+                        Books <span className="item-lenght">({booksArray.length} items) </span>
                     </div>
                     <MuiThemeProvider theme={theme}>
                         <Select
@@ -172,8 +199,8 @@ export class Books extends Component {
                             style={{ fontSize: "15px", color: "darkslategray" }}
                         >
                             <MenuItem value="Newly Arrived">Newly Arrived</MenuItem>
-                            <MenuItem value="Price : Low to High">Price : Low to High</MenuItem>
-                            <MenuItem value="Price : High to Low">Price : High to Low</MenuItem>
+                            <MenuItem onclick={this.sortByPriceAsc} value="Price : Low to High">Price : Low to High</MenuItem>
+                            <MenuItem onclick={this.sortByPriceDesc} value="Price : High to Low">Price : High to Low</MenuItem>
                         </Select>
                     </MuiThemeProvider>
                 </div>

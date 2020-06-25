@@ -62,6 +62,14 @@ let booksArray = [{
     image: `assets/attitude_is_everything`,
     title: "Attitude is Everything is a book based on Jeff Keller's journey of being a motivational speaker. ... He decides to make a gradual transition and start working as a full-time motivational orator in 1992. This novel is divided into three parts, Success Begins in the Mind, Watch Your Words, and Heaven Helps Those Who Act"
 },
+{
+    name: "The Road to React",
+    author: "Robin Wieruch",
+    price: 1308,
+    isAvailable: true,
+    image: `assets/The_Road_to_React`,
+    title: 'In "The Road to React" you will learn about all the fundamentals of React.js with Hooks while building a full-blown React application step by step. While you create the React application, every chapter will introduce you to a new React key feature.'
+},
 ]
 
 //theme ovverides for respective component.
@@ -91,10 +99,10 @@ const theme = createMuiTheme({
                 boxShadow: "2px 3px 14px lightgrey"
             }
         },
-        MuiTooltip: {
-            // .MuiTooltip-tooltip
-            tooltip :{
-                fontSize: "14px",
+        // .MuiTooltip-tooltip
+        tooltip :{
+            fontSize: "14px",
+                    MuiTooltip: {
                 backgroundColor:"#f0f0f1",
                 color:"black",
                 zIndex:"9999"
@@ -120,33 +128,6 @@ export class Books extends Component {
             filter: "",
             booksArray: booksArray,
         }
-
-        this.sortByPriceAsc = this.sortByPriceAsc.bind(this);
-        this.sortByPriceDesc = this.sortByPriceDesc.bind(this); 
-    }
-
-    sortByPriceAsc=()=>{
-
-        let sortedbooksAsc;
-        sortedbooksAsc= this.state.booksArray.sort((a,b)=>{
-           return parseInt(a.price) - parseInt(b.price);
-        })
-
-        this.setState({
-            booksArray:sortedbooksAsc
-        })
-    }
-    
-    sortByPriceDesc=()=>{
-
-        let sortedbooksDesc;
-        sortedbooksDesc= this.state.booksArray.sort((a,b)=>{
-           return parseInt(b.price)  - parseInt(a.price);
-        })
-
-        this.setState({
-            booksArray:sortedbooksDesc
-        })
     }
 
     _handleSelectFilter = (event) => {
@@ -199,8 +180,8 @@ export class Books extends Component {
                             style={{ fontSize: "15px", color: "darkslategray" }}
                         >
                             <MenuItem value="Newly Arrived">Newly Arrived</MenuItem>
-                            <MenuItem onclick={this.sortByPriceAsc} value="Price : Low to High">Price : Low to High</MenuItem>
-                            <MenuItem onclick={this.sortByPriceDesc} value="Price : High to Low">Price : High to Low</MenuItem>
+                            <MenuItem value="Price : Low to High">Price : Low to High</MenuItem>
+                            <MenuItem value="Price : High to Low">Price : High to Low</MenuItem>
                         </Select>
                     </MuiThemeProvider>
                 </div>

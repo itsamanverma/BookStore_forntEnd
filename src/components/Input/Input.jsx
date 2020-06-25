@@ -20,7 +20,7 @@ export default class Input extends Component {
         return (
             <TextField 
                 className='label'
-                id={this.props.id}
+                id="outlined-dense-multiline"
                 name={this.props.name}
                 type={this.props.type}
                 placeholder={this.props.placeholder}
@@ -29,6 +29,9 @@ export default class Input extends Component {
                 fullWidth
                 color={this.state.color}
                 required={this.props.required}
+                autoComplete='off'
+                variant={this.props.variant}
+                helperText={this.props.helperText}
             />
 
         );

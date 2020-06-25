@@ -194,7 +194,7 @@ class Register extends Component {
                         margin={'dense'}
                         style={{ width: '99%' }} 
                         placeholder={'Enter Your Email'} 
-                        label={'Email'} 
+                        label={'Email address'} 
                         onChange={this.getDataFromInput} 
                         required={true} 
                         autoComplete='off' 
@@ -272,10 +272,13 @@ class Register extends Component {
                     autoComplete='off' />
                   <span className='error'>{this.state.error.dob}</span>
                 </div>
+                    <div className="content-line">
+                    <span>By clicking Create account, I agree that:</span>   
+                    </div>    
                     <div className="buttonHead ">
-                            <Button variant="contained" onClick={this.register} className="RegisterButton">
-                                    Register
-                            </Button>
+                        <Button variant="contained" onClick={this.register} className="RegisterButton">
+                                Create account
+                        </Button>
                     </div>
                 </div>
             </div>    

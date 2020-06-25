@@ -18,7 +18,7 @@
 .buttonHead {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 20px 12px;
 }
 .signInButton {
@@ -27,6 +27,18 @@
 .RegisterButton {
     background-color: #377ae9 !important;
     color: white !important;
+    outline: none;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    font-family: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #eeeccc;
+}
+.content-line{
+    font-size: 15px;
 }
 .error {
     color: #f44336;

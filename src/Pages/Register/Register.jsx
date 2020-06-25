@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import Input from '../../components/Input/Input';
 import utility from '../../utility';
-import { Card, Typography, Button, CardContent } from '@material-ui/core/';
+import { Card, Button, CardContent } from '@material-ui/core/';
 import UserService from '../../services/UserService';
 import '../Register/Register.css';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
+import {
+    withRouter,
+    Link
+} from 'react-router-dom'
+import BookStoreIcon from '../../components/BookStoreIcon/BookStoreIcon';
 
 var userService = new UserService();
 
@@ -18,6 +28,7 @@ class Register extends Component {
       dob: '',
       region: '',
       isValidated: false,
+      showPassword: false,
       error: {},
     }
     this.getDataFromInput = this.getDataFromInput.bind(this);
@@ -49,7 +60,7 @@ class Register extends Component {
       lastname: '',
       password: '',
       dob: '',
-      region:''
+      region:'',
     };
     var valid = false;
     // if(event.target.name==='firstname'){
@@ -117,6 +128,13 @@ class Register extends Component {
     event.target.color = 'error';
   }
 
+    handleClickShowPassword = () => {
+        this.setState({ showPassword: !this.state.showPassword })
+    };
+
+    handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
    /**
    * function to handle click of the button of login
    * 
@@ -157,45 +175,110 @@ class Register extends Component {
         <Card className="card row">
           <CardContent>
             <div className="cardI">
-              <Typography variant="h5" component="h2" className='login' color='primary' id='card-heading' >
-                Register
-              </Typography>
-              <div className="paddingTopDown createTxt">Create Your BookStore Account</div>
-
+                <BookStoreIcon className="paddingTopDown" login={this.register} />
+                <div className="paddingTopDown createTxt">Create Your BookStore Account</div>
+                <div className="already">
+                    <Link style={{textDecoration:'none'}} to="/login">
+                                <span>Already have an account?</span>
+                                <Button  className="signInButton">
+                                    Sign in 
+                                </Button>
+                    </Link>
+                </div>
               <div className='form'>
                 <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', width: '100%' }}>
-                    <Input name={'email'} type={'Email'} style={{ width: '99%' }} placeholder={'Enter Your Email'} label={'Email'} onChange={this.getDataFromInput} required={true} autoComplete='off' />
-                    <div className='error'>{this.state.error.email}</div>
+                    <Input 
+                        id={'outlined-dense-multiline1'}
+                        name={'email'} 
+                        type={'Email'} 
+                        margin={'dense'}
+                        style={{ width: '99%' }} 
+                        placeholder={'Enter Your Email'} 
+                        label={'Email'} 
+                        onChange={this.getDataFromInput} 
+                        required={true} 
+                        autoComplete='off' 
+                    />
+                    <span className='helpTxt'>You can use letters, numbers & periods</span>
+                    <span className='error'>{this.state.error.email}</span>
                 </div>
                 <div className="twoTextField" >
                     <div className="column divField">
-                    <Input name={'firstname'} type={'text'} placeholder={'Enter First Name'} label={'First name'} onChange={this.getDataFromInput} variant={'outlined'} autoComplete='off'/>
-                    <div className='error'>{this.state.error.firstname}</div>
+                        <Input 
+                            id={'outlined-dense-multiline2'}
+                            name={'firstname'} 
+                            type={'text'} 
+                            margin={'dense'}
+                            placeholder={'Enter First Name'} 
+                            label={'First name'} 
+                            onChange={this.getDataFromInput} 
+                            variant={'outlined'} 
+                            autoComplete='off'
+                        />
+                        <span className='error'>{this.state.error.firstname}</span>
                     </div>
                     <div className="column divField">
-                    <Input name={'lastname'} type={'text'} placeholder={'Enter Last Name'} label={'Last Name'} onChange={this.getDataFromInput} variant={'outlined'} autoComplete='off' />
-                    <div className='error'>{this.state.error.lastname}</div>
+                        <Input 
+                            id={'outlined-dense-multiline3'}
+                            name={'lastname'} 
+                            type={'text'} 
+                            margin={'dense'}
+                            placeholder={'Enter Last Name'} 
+                            label={'Last Name'} 
+                            onChange={this.getDataFromInput} 
+                            variant={'outlined'} 
+                            autoComplete='off' />
+                        <span className='error'>{this.state.error.lastname}</span>
                     </div>
                 </div>
+                <form className="twoTextField" >
+                            <div className="column divField-p" >
+                                <TextField
+                                    id="outlined-dense-multiline4"
+                                    label="Password"
+                                    margin="dense"
+                                    type={this.state.showPassword ? 'text' : 'password'}
+                                    variant="outlined"
+                                    className='formField'
+                                    name='password'
+                                    onChange={this.setValue}
+                                    autoComplete='off'
+                                    InputProps={{
+                                        endAdornment: <InputAdornment position="end">  <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={this.handleClickShowPassword}
+                                            onMouseDown={this.handleMouseDownPassword}
+                                            edge="end"
+                                        >
+                                            {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton> </InputAdornment>,
+                                    }}
+
+
+                                />
+                                <span className='error'>{this.state.error.password}</span>
+                            </div>
+                        </form>
                 <div>
-                  <Input name={'password'} type={'password'} placeholder={'Enter Password'} label={'PassWord'} onChange={this.getDataFromInput} variant={'outlined'} autoComplete='off' 
-                  />
-                  <div className='error'>{this.state.error.password}</div>
+                  <Input 
+                    id={'outlined-dense-multiline5'}
+                    name={'dob'} 
+                    type={'date'} 
+                    margin={'dense'}
+                    placeholder={'date of birth'} 
+                    label={''} 
+                    onChange={this.getDataFromInput} 
+                    variant={'outlined'} 
+                    autoComplete='off' />
+                  <span className='error'>{this.state.error.dob}</span>
                 </div>
-                <div>
-                  <Input name={'dob'} type={'date'} placeholder={'date of birth'} label={''} onChange={this.getDataFromInput} variant={'outlined'} autoComplete='off' />
-                  <div className='error'>{this.state.error.dob}</div>
+                    <div className="buttonHead ">
+                            <Button variant="contained" onClick={this.register} className="RegisterButton">
+                                    Register
+                            </Button>
+                    </div>
                 </div>
-                <div id='register-btn-div'>
-                  <Button onClick={this.handleClick} className='register-btn' variant="contained" color="primary" type="submit">
-                    Submit
-                  </Button>
-                </div>
-                <span><Typography id='reg-text-login'>Already have an account <a href="/login">Login</a></Typography></span>
-              </div>
-            </div>
-            
-            
+            </div>    
           </CardContent>
         </Card>
       </div>
@@ -203,4 +286,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);

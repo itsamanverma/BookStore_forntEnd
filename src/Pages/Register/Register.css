@@ -51,7 +51,7 @@
     padding: 10px 0;
 }
 .createTxt {
-    color: #202124;
+    color: #4c4e52;
     font-family: "Google Sans", arial, sans-serif;
     font-size: 24px;
 }
@@ -75,7 +75,12 @@
 .divField{
     width: 49%;
 }
-
+.divField-p{
+    width: 100%;    
+}
+.already{
+    margin-top: -15px;
+}
 @media screen and (max-width: 600px) {
     .hide {
         display: none !important;

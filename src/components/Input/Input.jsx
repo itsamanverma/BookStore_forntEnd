@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { TextField } from "@material-ui/core";
 
+
 export default class Input extends Component {
     constructor(props) {
         super(props);
@@ -20,9 +21,10 @@ export default class Input extends Component {
         return (
             <TextField 
                 className='label'
-                id="outlined-dense-multiline"
+                id={this.props.id}
                 name={this.props.name}
                 type={this.props.type}
+                margin={this.props.margin}
                 placeholder={this.props.placeholder}
                 label={this.props.label}
                 onChange={this.sendDataToParent}

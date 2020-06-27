@@ -28,7 +28,7 @@ let regions = [
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      width: '56ch',
+      width: '64ch',
     },
   },
 }));
@@ -45,7 +45,7 @@ export default function Country() {
 
       return (
         <form className={classes.root} noValidate autoComplete="off">
-            <div className="column">
+            <div className="column country-div">
                 <TextField
                     id="outlined-dense-multiline6"
                     select

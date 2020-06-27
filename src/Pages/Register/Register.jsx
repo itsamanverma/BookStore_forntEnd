@@ -289,7 +289,10 @@ class Register extends Component {
                             label="Please contact me via email"
                         />
                     </FormGroup>
-                </div>
+                    <div className="termcondition">
+                         <pre>By clicking Create account, I agree that I have read and accepted the <a href="/trems">Terms of Use</a> and <a href="/policy">Privacy Policy</a>.</pre>
+                    </div>
+                </div>  
                     <div className="buttonHead ">
                         <Button variant="contained" onClick={this.register} className="RegisterButton">
                                 Create account

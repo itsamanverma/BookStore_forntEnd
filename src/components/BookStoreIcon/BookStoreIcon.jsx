@@ -7,7 +7,7 @@ class BookStoreIcon extends Component {
                 <span style={{color:'#4385F4',fontSize:'20px',fontWeight:500}}>B</span>
                 <span style={{color:'#EA4335',fontSize:'20px',fontWeight:500}}>o</span>
                 <span style={{color:'#FBBD35',fontSize:'20px',fontWeight:500}}>o</span>
-                <span style={{color:'#4385F4',fontSize:'20px',fontWeight:500}}>K</span>
+                <span style={{color:'#4385F4',fontSize:'20px',fontWeight:500}}>k</span>
                 <span style={{color:'#4EA853',fontSize:'20px',fontWeight:500}}>S</span>
                 <span style={{color:'#EA4335',fontSize:'20px',fontWeight:500}}>t</span>
                 <span style={{color:'#EA4335',fontSize:'20px',fontWeight:500}}>o</span>

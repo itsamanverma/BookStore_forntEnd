@@ -98,6 +98,17 @@
 .already{
     margin-top: -15px;
 }
+.termcondition {
+    font-size: 13px;
+    display: inline;
+}
+.termcondition p{
+    margin-top: 0px;
+}
+.termcondition pre{
+    margin: 0px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
 @media screen and (max-width: 600px) {
     .hide {
         display: none !important;

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Input from '../../components/Input/Input';
 import utility from '../../utility';
-import { Card, Button, CardContent } from '@material-ui/core/';
+import { Card, Button, CardContent, FormGroup,FormControlLabel,Checkbox } from '@material-ui/core/';
 import UserService from '../../services/UserService';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import '../Register/Register.css';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
@@ -14,6 +16,7 @@ import {
     Link
 } from 'react-router-dom'
 import BookStoreIcon from '../../components/BookStoreIcon/BookStoreIcon';
+import Country from '../../components/Country/Country';
 
 var userService = new UserService();
 
@@ -135,6 +138,7 @@ class Register extends Component {
     handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
    /**
    * function to handle click of the button of login
    * 
@@ -169,7 +173,6 @@ class Register extends Component {
 
   render() {
     //console.log("email", this.state.email);
-
     return (
       <div className="register">
         <Card className="card row">
@@ -181,7 +184,7 @@ class Register extends Component {
                     <Link style={{textDecoration:'none'}} to="/login">
                                 <span>Already have an account?</span>
                                 <Button  className="signInButton">
-                                    Sign in 
+                                    <span className="SignInButon-First">S</span>ign in 
                                 </Button>
                     </Link>
                 </div>
@@ -253,28 +256,40 @@ class Register extends Component {
                                             {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
                                         </IconButton> </InputAdornment>,
                                     }}
-
-
                                 />
                                 <span className='error'>{this.state.error.password}</span>
                             </div>
                         </form>
-                <div>
+                <div className="column divField-p">
                   <Input 
                     id={'outlined-dense-multiline5'}
                     name={'dob'} 
                     type={'date'} 
                     margin={'dense'}
-                    placeholder={'date of birth'} 
-                    label={''} 
+                    placeholder={'Date of Birth'} 
+                    label={'Date of Birth'} 
                     onChange={this.getDataFromInput} 
                     variant={'outlined'} 
                     autoComplete='off' />
                   <span className='error'>{this.state.error.dob}</span>
                 </div>
-                    <div className="content-line">
-                    <span>By clicking Create account, I agree that:</span>   
-                    </div>    
+                <div>
+                    <Country />
+                </div>
+                <div className="checkbox">
+                    <FormGroup>
+                        <FormControlLabel
+                            control={
+                            <Checkbox
+                                icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                                checkedIcon={<CheckBoxIcon fontSize="small" />}
+                                name="checkedI"
+                            />
+                            }
+                            label="Please contact me via email"
+                        />
+                    </FormGroup>
+                </div>
                     <div className="buttonHead ">
                         <Button variant="contained" onClick={this.register} className="RegisterButton">
                                 Create account

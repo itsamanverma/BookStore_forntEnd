@@ -26,6 +26,9 @@
     color: #377ae9 !important;
     text-transform: lowercase;
 }
+.country{
+    width: 98%;
+}
 .SignInButon-First{
     text-transform: uppercase;
 }

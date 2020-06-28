@@ -14,12 +14,34 @@ import UserService from "../../services/user_service";
 import { FormGroup,FormControlLabel,Checkbox } from '@material-ui/core/';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import Country from '../../components/Country/Country';
 
 import {
     withRouter,
     Link
 } from 'react-router-dom';
+
+let regions = [
+  {
+    value: 'IND',
+    label: 'india',
+  },
+  {
+    value: 'USD',
+    label: 'United state',
+  },
+  {
+    value: 'EUR',
+    label: 'Europe',
+  },
+  {
+    value: 'BTC',
+    label: 'Britten',
+  },
+  {
+    value: 'JPY',
+    label: 'Japan',
+  },
+];
 
 class Register extends Component {
         state = {
@@ -277,16 +299,40 @@ class Register extends Component {
                                     type="date"
                                     variant='outlined'
                                     className='formField'
-                                    error=''
+                                    InputLabelProps={{
+                                      shrink: true,
+                                    }}
                                     name='dob'
                                     onChange={this.setValue}
                                     autoComplete='off'
                                 /> 
                                 <span className='error'>{errors.dob}</span>
                             </div>
-                            <div>
-                              <Country />
-                            </div>
+                            <form  noValidate autoComplete="off">
+                              <div className="column country-div">
+                                  <TextField
+                                      className="country"
+                                      id="outlined-dense-multiline6"
+                                      select
+                                      label="Country/Region"  
+                                      placeholder='Country/Region'   
+                                      value={regions}  
+                                      onChange={''} 
+                                      SelectProps={{
+                                          native: true,
+                                      }}
+                                      helperText="Please select your Country/Region"
+                                      variant="outlined"
+                                      margin="dense"
+                                      >
+                                      {regions.map((option) => (
+                                          <option key={option.value} value={option.value}>
+                                          {option.label}
+                                          </option>
+                                      ))}
+                                  </TextField>
+                              </div>
+                        </form>
                         <div className="checkbox">
                             <FormGroup>
                                 <FormControlLabel

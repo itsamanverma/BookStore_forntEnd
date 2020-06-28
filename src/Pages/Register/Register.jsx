@@ -1,136 +1,163 @@
-import React, { Component } from 'react';
-import Input from '../../components/Input/Input';
-import utility from '../../utility';
-import { Card, Button, CardContent, FormGroup,FormControlLabel,Checkbox } from '@material-ui/core/';
-import UserService from '../../services/UserService';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import '../Register/Register.css';
+import React,{Component} from 'react';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import TextField from '@material-ui/core/TextField';
+import './Register.css';
+import BookStoreIcon from '../../components/BookStoreIcon/BookStoreIcon';
+import utility from "../../utility";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
-import TextField from '@material-ui/core/TextField';
+import Snackbar from '@material-ui/core/Snackbar';
+import UserService from "../../services/user_service";
+import { FormGroup,FormControlLabel,Checkbox } from '@material-ui/core/';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+
+
 import {
     withRouter,
     Link
-} from 'react-router-dom'
-import BookStoreIcon from '../../components/BookStoreIcon/BookStoreIcon';
-import Country from '../../components/Country/Country';
-
-var userService = new UserService();
+} from 'react-router-dom';
 
 class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      firstname: '',
-      lastname: '',
-      password: '',
-      dob: '',
-      region: '',
-      isValidated: false,
-      showPassword: false,
-      error: {},
+        state = {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            dob: '',
+            region: '',
+            showPassword: false,
+            open: false,
+            snakbarmsg: '',
+            errors: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                dob: '',
+                region: '',
+                error: false
+            }
+        }
+
+    register = () => {
+        console.log('i am in register', this.state);
+        this.props.loader(true);
+        setTimeout(() => {
+        this.props.loader(false);
+            
+        }, 2000);
+        this.validate('firstName', this.state.firstName);
+        this.validate('lastName', this.state.lastName)
+        this.validate('email', this.state.email)
+        this.validate('password', this.state.password)
+        this.validate('dob', this.state.dob)
+        this.validate('region', this.state.region)
+        if (!this.state.errors.error) {
+            console.log("api call");
+            UserService.register(this.state).then((data) => {
+                console.log("response from register", data);
+                this.setState({ open: true, snakbarmsg: data.data.message })
+
+                this.props.history.push('login')
+
+
+            })
+                .catch((error) => {
+                    this.setState({ open: true, snakbarmsg: error.response.data.message })
+                    console.log("error from register ", error.response.data.message);
+
+                })
+        }
+
+
     }
-    this.getDataFromInput = this.getDataFromInput.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.validate = this.validate.bind(this);
-  }
-
-   /**
-   * function to get data from the object
-   * 
-   * @param {var} data 
-   */
-  getDataFromInput(event,data) {
-    // console.log('register', data);
-    this.setState({
-      [event.target.name]: data
-    })
-  }
-
-  /**
-   * function to handle the input validations of the page
-   * 
-   * @param {event} event 
-   */
-  validate(event) {
-    var error = {
-      email: '',
-      firstname: '',
-      lastname: '',
-      password: '',
-      dob: '',
-      region:'',
-    };
-    var valid = false;
-    // if(event.target.name==='firstname'){
-        if (this.state.firstname.length < 3) {
-            error.firstname = 'First Name must be 3 characters long!'
-            valid = true;
-          }
-        else if (!utility.isStringValid(this.state.firstname)) {
-        error.firstname = 'First name is invalid'
-        valid = true;
-        }
-        else{
-            error.firstname=''
-            valid = false;  
-        }
-        //  }
-        // else if(event.target.name==='lastname'){
-        if (this.state.lastname.length < 3) {
-        error.lastname = 'Last Name must be 3 characters long!'
-        valid = true;
-        }
-        else if (!utility.isStringValid(this.state.lastname)) {
-        error.lastname = 'Last Name is Invalid'
-        valid = true;
-        }
-        else {
-            error.lastname=''
-            valid = false;
-        }
-        // else if(event.target.name==='email'){
-        console.log(utility.isEmailValid(this.state.email));
-
-        if (!utility.isEmailValid(this.state.email)) {
-            error.email = 'user Name  is invalid'
-            valid = true;
-
-        } else {
-            error.email = ''
-            valid = false;
-
-        }
-        //}
-        //else if(event.target.name==='password'){
-        if (this.state.password.length < 5) {
-            error.password = 'Password cannot be empty'
-            valid = false;
-        }
-        else {
-            error.password = ''
-            valid = false;
-
-        }
-        //}
-        this.setState({
-            error: error,
-            isValidated: valid,
+    setValue = (event) => {
+        this.setState({ [event.target.name]: event.target.value }, () => {
         })
-        return valid;
+        this.validate(event.target.name, event.target.value)
     }
+    validate(name, value) {
+        let errors = this.state.errors;
+        switch (name) {
+            case 'firstName':
+                if (value.length < 3) {
+                    errors.firstName = 'First Name must be 3 characters long!';
+                    errors.error = true;
+                }
+                else if (!utility.isStringValid(value)) {
+                    errors.firstName = 'First name is invalid'
+                    errors.error = true;
 
-  setcolor(event) {
-    event.target.color = 'error';
-  }
-  unsetcolor(event) {
-    event.target.color = 'error';
-  }
+                } else {
+                    errors.firstName = ''
+                    errors.error = false;
 
+                }
+                break;
+            case 'lastName':
+                if (value.length < 3) {
+                    errors.lastName = 'Last Name must be 3 characters long!';
+                    errors.error = true;
+
+                }
+                else if (!utility.isStringValid(value)) {
+                    errors.lastName = 'Last name is invalid'
+                    errors.error = true;
+
+                } else {
+                    errors.lastName = ''
+                    errors.error = false;
+
+                }
+                break;
+            case 'email':
+                console.log(utility.isEmailValid(value));
+
+                if (!utility.isEmailValid(value)) {
+                    errors.email = 'user Name  is invalid'
+                    errors.error = true;
+
+                } else {
+                    errors.email = ''
+                    errors.error = false;
+
+                }
+                break;
+            case 'password':
+                if (value.length < 5) {
+                    errors.password = 'password must be 5 characters long!';
+                    errors.error = true;
+
+                }
+                else {
+                    errors.password = ''
+                    errors.error = false;
+
+                }
+                break;
+            case 'confirm':
+                if (value.length < 5) {
+                    errors.confirm = 'confirm password must be 5 characters long!';
+                    errors.error = true;
+
+                }
+                else {
+                    errors.confirm = ''
+                    errors.error = false;
+
+                }
+                break;
+            default:
+                break;
+
+        }
+        this.setState({ errors, [name]: value }, () => {
+        })
+    }
     handleClickShowPassword = () => {
         this.setState({ showPassword: !this.state.showPassword })
     };
@@ -138,104 +165,86 @@ class Register extends Component {
     handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-
-   /**
-   * function to handle click of the button of login
-   * 
-   * @param {event} event 
-   */
-  handleClick() {
-
-    if (this.validate()) {
-      const data = {
-        email: this.state.email,
-        firstname: this.state.firstname,
-        lastname: this.state.lastname,
-        password: this.state.password,
-        dob:this.state.dob,
-        region:this.state.region
-      }
-      userService.register(data).then(res => {
-        if (res.status === 210) {
-          this.setState({
-            error: {
-              email: res.data.error.email[0],   
-            }
-          });
-        }
-        else if (res.status === 201) {
-          alert('Registration Successfull')
-        }
-
-      }).catch();
+    handleClose = () => {
+        this.setState({ open: false });
     }
-  }
 
-  render() {
-    //console.log("email", this.state.email);
-    return (
-      <div className="register">
-        <Card className="card row">
-          <CardContent>
-            <div className="cardI">
-                <BookStoreIcon className="paddingTopDown" login={this.register} />
-                <div className="paddingTopDown createTxt">Create Your BookStore Account</div>
-                <div className="already">
-                    <Link style={{textDecoration:'none'}} to="/login">
-                                <span>Already have an account?</span>
-                                <Button  className="signInButton">
-                                    <span className="SignInButon-First">S</span>ign in 
-                                </Button>
-                    </Link>
-                </div>
-              <div className='form'>
-                <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', width: '100%' }}>
-                    <Input 
-                        id={'outlined-dense-multiline1'}
-                        name={'email'} 
-                        type={'Email'} 
-                        margin={'dense'}
-                        style={{ width: '99%' }} 
-                        placeholder={'Enter Your Email'} 
-                        label={'Email address'} 
-                        onChange={this.getDataFromInput} 
-                        required={true} 
-                        autoComplete='off' 
-                    />
-                    <span className='helpTxt'>You can use letters, numbers & periods</span>
-                    <span className='error'>{this.state.error.email}</span>
-                </div>
-                <div className="twoTextField" >
-                    <div className="column divField">
-                        <Input 
-                            id={'outlined-dense-multiline2'}
-                            name={'firstname'} 
-                            type={'text'} 
-                            margin={'dense'}
-                            placeholder={'Enter First Name'} 
-                            label={'First name'} 
-                            onChange={this.getDataFromInput} 
-                            variant={'outlined'} 
-                            autoComplete='off'
-                        />
-                        <span className='error'>{this.state.error.firstname}</span>
-                    </div>
-                    <div className="column divField">
-                        <Input 
-                            id={'outlined-dense-multiline3'}
-                            name={'lastname'} 
-                            type={'text'} 
-                            margin={'dense'}
-                            placeholder={'Enter Last Name'} 
-                            label={'Last Name'} 
-                            onChange={this.getDataFromInput} 
-                            variant={'outlined'} 
-                            autoComplete='off' />
-                        <span className='error'>{this.state.error.lastname}</span>
-                    </div>
-                </div>
-                <form className="twoTextField" >
-                            <div className="column divField-p" >
+    render() {
+        const { errors, open } = this.state;
+        return (
+            <div className="register">
+                <Snackbar open={open} message={this.state.snakbarmsg} autoHideDuration={3000} action={[
+                    <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
+                        close
+                    </Button>
+                ]} />
+
+                <Card className="card row">
+                    <div className="cardI">
+                        <BookStoreIcon className="paddingTopDown" login={this.register} />
+                        <div className="paddingTopDown createTxt">Create Your Fundoo Account</div>
+                        <div className="already">
+                            <Link style={{textDecoration:'none'}} to="/login">
+                                        <span>Already have an account?</span>
+                                        <Button  className="signInButton">
+                                            <span className="SignInButon-First">S</span>ign in 
+                                        </Button>
+                            </Link>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', width: '100%' }}>
+                            <TextField
+                                id="outlined-dense-multiline3"
+                                label="UserName"
+                                margin="dense"
+                                error={errors.email.length > 0}
+                                variant="outlined"
+                                style={{ width: '99%' }}
+                                name='email'
+                                helperText={errors.email}
+                                onChange={this.setValue}
+                                autoComplete='off'
+
+                            />
+                            <span className='helpTxt'>You can use letters, numbers & periods</span>
+
+                        </div>
+                        <div className="twoTextField" >
+                            <div className="column divField" >
+                                <TextField
+                                    id="outlined-dense-multiline1"
+                                    label="FirstName"
+                                    margin="dense"
+                                    error={errors.firstName.length > 0}
+                                    name="firstName"
+                                    value={this.state.firstName}
+                                    onChange={this.setValue}
+                                    variant="outlined"
+                                    className='formField'
+                                    autoComplete='off'
+                                />
+                                <span className='error'>{errors.firstName}</span>
+
+                            </div>
+                            <div className="column divField">
+                                <TextField
+                                    id="outlined-dense-multiline2"
+                                    label="LastName"
+                                    margin="dense"
+                                    variant="outlined"
+                                    className='formField'
+                                    name="lastName"
+                                    onChange={this.setValue}
+                                    error={errors.lastName.length > 0}
+                                    autoComplete='off'
+
+
+                                />
+                                <span className='error'>{errors.lastName}</span>
+
+                            </div>
+                        </div>
+                        <form className="twoTextField" >
+                            <div className="column divField password-div" >
                                 <TextField
                                     id="outlined-dense-multiline4"
                                     label="Password"
@@ -243,6 +252,7 @@ class Register extends Component {
                                     type={this.state.showPassword ? 'text' : 'password'}
                                     variant="outlined"
                                     className='formField'
+                                    error={errors.password.length > 0}
                                     name='password'
                                     onChange={this.setValue}
                                     autoComplete='off'
@@ -256,55 +266,39 @@ class Register extends Component {
                                             {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
                                         </IconButton> </InputAdornment>,
                                     }}
+
+
                                 />
-                                <span className='error'>{this.state.error.password}</span>
+                                <span className='error'>{errors.password}</span>
+
                             </div>
                         </form>
-                <div className="column divField-p">
-                  <Input 
-                    id={'outlined-dense-multiline5'}
-                    name={'dob'} 
-                    type={'date'} 
-                    margin={'dense'}
-                    placeholder={'Date of Birth'} 
-                    label={'Date of Birth'} 
-                    onChange={this.getDataFromInput} 
-                    variant={'outlined'} 
-                    autoComplete='off' />
-                  <span className='error'>{this.state.error.dob}</span>
-                </div>
-                <div>
-                    <Country />
-                </div>
-                <div className="checkbox">
-                    <FormGroup>
-                        <FormControlLabel
-                            control={
-                            <Checkbox
-                                icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                                checkedIcon={<CheckBoxIcon fontSize="small" />}
-                                name="checkedI"
-                            />
-                            }
-                            label="Please contact me via email"
-                        />
-                    </FormGroup>
-                    <div className="termcondition">
-                         <pre>By clicking Create account, I agree that I have read and accepted the <a href="/trems">Terms of Use</a> and <a href="/policy">Privacy Policy</a>.</pre>
+                        <div className="checkbox">
+                            <FormGroup>
+                                <FormControlLabel
+                                    control={
+                                    <Checkbox
+                                        icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                                        checkedIcon={<CheckBoxIcon fontSize="small" />}
+                                        name="checkedI"
+                                    />
+                                    }
+                                    label="Please contact me via email"
+                                />
+                            </FormGroup>
+                            <div className="termcondition">
+                                <pre>By clicking Create account, I agree that I have read and accepted the <a href="/trems">Terms of Use</a> and <a href="/policy">Privacy Policy</a>.</pre>
+                            </div>
+                        </div>  
+                        <div className="buttonHead ">
+                            <Button variant="contained" onClick={this.register} className="RegisterButton">
+                                Register
+                            </Button>
+                        </div>
                     </div>
-                </div>  
-                    <div className="buttonHead ">
-                        <Button variant="contained" onClick={this.register} className="RegisterButton">
-                                Create account
-                        </Button>
-                    </div>
-                </div>
-            </div>    
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
+                </Card>
+            </div>
+        );
+    }
 }
-
 export default withRouter(Register);

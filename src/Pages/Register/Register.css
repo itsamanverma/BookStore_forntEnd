@@ -7,7 +7,7 @@
     justify-content: flex-end;
     height: 100%;
     align-items: center;
-    margin: 30px;
+    margin: 40px;
 }
 .card {
     padding: 50px;
@@ -87,12 +87,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 100%;
+    width: 99%;
 }
 .divField{
     width: 49%;
 }
-.divField-p{
+.password-div{
     width: 100%;    
 }
 .already{

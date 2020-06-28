@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Country() {
 
     const classes = useStyles();
-    const [setRegion] = React.useState('EUR');
+    const [ setRegion ] = React.useState('EUR');
 
     const handleChange = (event) => {
         setRegion(event.target.value);

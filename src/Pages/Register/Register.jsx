@@ -14,7 +14,7 @@ import UserService from "../../services/user_service";
 import { FormGroup,FormControlLabel,Checkbox } from '@material-ui/core/';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-
+import Country from '../../components/Country/Country';
 
 import {
     withRouter,
@@ -191,9 +191,9 @@ class Register extends Component {
                                         </Button>
                             </Link>
                         </div>
-                        <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', width: '100%' }}>
+                        <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', width: '99%' }}>
                             <TextField
-                                id="outlined-dense-multiline3"
+                                id="outlined-dense-multiline1"
                                 label="UserName"
                                 margin="dense"
                                 error={errors.email.length > 0}
@@ -211,7 +211,7 @@ class Register extends Component {
                         <div className="twoTextField" >
                             <div className="column divField" >
                                 <TextField
-                                    id="outlined-dense-multiline1"
+                                    id="outlined-dense-multiline2"
                                     label="FirstName"
                                     margin="dense"
                                     error={errors.firstName.length > 0}
@@ -227,7 +227,7 @@ class Register extends Component {
                             </div>
                             <div className="column divField">
                                 <TextField
-                                    id="outlined-dense-multiline2"
+                                    id="outlined-dense-multiline3"
                                     label="LastName"
                                     margin="dense"
                                     variant="outlined"
@@ -236,8 +236,6 @@ class Register extends Component {
                                     onChange={this.setValue}
                                     error={errors.lastName.length > 0}
                                     autoComplete='off'
-
-
                                 />
                                 <span className='error'>{errors.lastName}</span>
 
@@ -266,13 +264,29 @@ class Register extends Component {
                                             {this.state.showPassword ? <Visibility /> : <VisibilityOff />}
                                         </IconButton> </InputAdornment>,
                                     }}
-
-
                                 />
                                 <span className='error'>{errors.password}</span>
 
                             </div>
                         </form>
+                            <div className="column divFeild datepicker">
+                                <TextField 
+                                    id="outlined-dense-multiline5"
+                                    label="Date of Birth"
+                                    margin="dense"
+                                    type="date"
+                                    variant='outlined'
+                                    className='formField'
+                                    error=''
+                                    name='dob'
+                                    onChange={this.setValue}
+                                    autoComplete='off'
+                                /> 
+                                <span className='error'>{errors.dob}</span>
+                            </div>
+                            <div>
+                              <Country />
+                            </div>
                         <div className="checkbox">
                             <FormGroup>
                                 <FormControlLabel

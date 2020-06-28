@@ -93,7 +93,10 @@
     width: 49%;
 }
 .password-div{
-    width: 100%;    
+    width: 99%;    
+}
+.datepicker{
+    width: 98%;
 }
 .already{
     margin-top: -15px;

@@ -20,28 +20,6 @@ import {
     Link
 } from 'react-router-dom';
 
-let regions = [
-  {
-    value: 'IND',
-    label: 'india',
-  },
-  {
-    value: 'USD',
-    label: 'United state',
-  },
-  {
-    value: 'EUR',
-    label: 'Europe',
-  },
-  {
-    value: 'BTC',
-    label: 'Britten',
-  },
-  {
-    value: 'JPY',
-    label: 'Japan',
-  },
-];
 
 class Register extends Component {
         state = {
@@ -50,7 +28,28 @@ class Register extends Component {
             email: '',
             password: '',
             dob: '',
-            region: '',
+            region: [
+              {
+                value: 'IND',
+                label: 'india',
+              },
+              {
+                value: 'USD',
+                label: 'United state',
+              },
+              {
+                value: 'EUR',
+                label: 'Europe',
+              },
+              {
+                value: 'BTC',
+                label: 'Britten',
+              },
+              {
+                value: 'JPY',
+                label: 'Japan',
+              },
+            ],
             showPassword: false,
             open: false,
             snakbarmsg: '',
@@ -316,8 +315,8 @@ class Register extends Component {
                                       select
                                       label="Country/Region"  
                                       placeholder='Country/Region'   
-                                      value={regions}  
-                                      onChange={''} 
+                                      value={this.state.region}  
+                                      onChange={this.handlechange} 
                                       SelectProps={{
                                           native: true,
                                       }}
@@ -325,7 +324,7 @@ class Register extends Component {
                                       variant="outlined"
                                       margin="dense"
                                       >
-                                      {regions.map((option) => (
+                                      {this.state.region.map((option) => (
                                           <option key={option.value} value={option.value}>
                                           {option.label}
                                           </option>

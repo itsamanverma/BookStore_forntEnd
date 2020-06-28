@@ -16,7 +16,7 @@ module.exports = {
         return regex.test(value);
     },
     isDataValid(value) {
-        let dateRegex = '^(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).{4}$'
+        let dateRegex = '^([0-9]{4})-([0-9]{2})-([0-9]{2})$'
         let regex = new RegExp(dateRegex);
         return regex.test(value);
     },

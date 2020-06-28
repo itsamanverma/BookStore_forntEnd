@@ -160,19 +160,7 @@ class Register extends Component {
 
                 }
                 break;
-            case 'confirm':
-                if (value.length < 5) {
-                    errors.confirm = 'confirm password must be 5 characters long!';
-                    errors.error = true;
-
-                }
-                else {
-                    errors.confirm = ''
-                    errors.error = false;
-
-                }
-                break;
-            default:
+             default:
                 break;
 
         }

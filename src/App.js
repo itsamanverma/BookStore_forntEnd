@@ -5,6 +5,7 @@ import DashboardPage from './Pages/DashboardPage';
 import defTheme from './components/defTheme/defTheme';
 import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
+import Forget from './Pages/Forgot/Forgot';
 import Button from '@material-ui/core/Button';
 import LoadingOverlay from 'react-loading-overlay';
 import './App.scss';
@@ -57,6 +58,9 @@ function App()  {
                                 </Route>
                                 <Route path="/login">
                                     <Login snackbar={toggleSnackbar} loader={toggleLoader} />
+                                </Route>
+                                <Route path="/forgot">
+                                     <Forget snackbar={toggleSnackbar} loader={toggleLoader} />
                                 </Route>
                             </Switch>  
                         </MuiThemeProvider>

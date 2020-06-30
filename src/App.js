@@ -7,6 +7,7 @@ import Register from './Pages/Register/Register';
 import Login from './Pages/Login/Login';
 import Button from '@material-ui/core/Button';
 import LoadingOverlay from 'react-loading-overlay';
+import './App.scss';
 import Snackbar from '@material-ui/core/Snackbar';
 
 const theme = createMuiTheme(defTheme);
@@ -54,7 +55,9 @@ function App()  {
                                 <Route path='/register'>
                                     <Register snackbar={toggleSnackbar} loader={toggleLoader} />
                                 </Route>
-                                <Route path='/logic' component={Login}/>
+                                <Route path="/login">
+                                    <Login snackbar={toggleSnackbar} loader={toggleLoader} />
+                                </Route>
                             </Switch>  
                         </MuiThemeProvider>
                     </Router>

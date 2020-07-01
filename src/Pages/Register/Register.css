@@ -8,6 +8,7 @@
     height: 100%;
     align-items: center;
     margin: 40px;
+    /* background-image: url('../../assets/Bookstore.jpeg'); */
 }
 .card {
     padding: 50px;
@@ -15,6 +16,8 @@
     -webkit-border-radius: 8px;
     border-radius: 8px;
     box-shadow: none !important;
+    background-color: lightcyan;
+
 }
 .buttonHead {
     display: flex;

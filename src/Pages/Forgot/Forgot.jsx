@@ -48,7 +48,7 @@ function Forget(props) {
   }
 
   return (
-    <div className="loginMain row center">
+    <div className="loginMain row center" style={{backgroundcolor:'lightcyan'}}>
       <div className="loginCard">
         <div className="column center">
           <BookStoreIcon className="paddingTopDown fitWidth" />
@@ -78,12 +78,12 @@ function Forget(props) {
           <Link to="/register">
             <div className="createButton">
               Create account
-        </div>
+            </div>
           </Link>
 
           <Button variant="contained" style={{ opacity: disable ? '0.6' : '1' }} disabled={disable} onClick={reset} className="loginButton" >
             Reset Password
-</Button>
+          </Button>
         </div>
       </div>
     </div>

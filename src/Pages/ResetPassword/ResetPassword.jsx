@@ -6,7 +6,6 @@ import {
     withRouter,
     useParams
 } from 'react-router-dom';
-import utility from "../../utility";
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -140,7 +139,7 @@ const ResetPassword = (props) => {
     }
 
     return (
-        <div className="loginMain row center">
+        <div className="loginMain row center" style={{backgroundColor: 'lightcyan'}}>
             <div className="loginCard">
                 <div className="column center">
                     <BookStoreIcon className="paddingTopDown fitWidth" />

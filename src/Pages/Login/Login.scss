@@ -7,11 +7,12 @@
         display: block;
         -webkit-flex-shrink: 0;
         flex-shrink: 0;
-        margin: 0 auto;
+        margin: 40px auto;
         -webkit-transition: 0.2s;
         transition: 0.2s;
         padding: 48px 40px 36px;
         height: fit-content;
+        background-color: lightcyan;
         .headText {
             color: #202124;
             padding-bottom: 0;

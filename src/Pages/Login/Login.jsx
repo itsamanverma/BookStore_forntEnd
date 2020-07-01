@@ -185,17 +185,17 @@ const Login = (props) => {
                         <Link to="/register">
                             <div className="createButton">
                                 Create account
-                </div>
+                            </div>
                         </Link>
 
                         <Button variant="contained" className="loginButton" onClick={login}>
                             Login
-      </Button>
+                        </Button>
                     </div>
                     <Link to="/forgot">
                         <div className="createButton" style={{padding:'5px 0'}}>
                             forgot account
-                </div>
+                        </div>
                     </Link>
                 </div>
 

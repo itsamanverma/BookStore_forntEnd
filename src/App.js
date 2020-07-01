@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import LoadingOverlay from 'react-loading-overlay';
 import './App.scss';
 import Snackbar from '@material-ui/core/Snackbar';
+import ResetPassword from './Pages/ResetPassword/ResetPassword';
 
 const theme = createMuiTheme(defTheme);
 
@@ -61,6 +62,9 @@ function App()  {
                                 </Route>
                                 <Route path="/forgot">
                                      <Forget snackbar={toggleSnackbar} loader={toggleLoader} />
+                                </Route>
+                                <Route path="/reset/:token">
+                                     <ResetPassword snackbar={toggleSnackbar} loader={toggleLoader} />
                                 </Route>
                             </Switch>  
                         </MuiThemeProvider>

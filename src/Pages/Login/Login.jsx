@@ -136,10 +136,17 @@ const Login = (props) => {
     return (
         <div className="loginMain row center">
             <div className="loginCard">
-                <div className="column center">
+                <div className="column ">
                     <BookStoreIcon className="paddingTopDown fitWidth" />
                     <h1 className="headText">Sign in</h1>
-                    <span className="subText">Use your Google Account</span>
+                        <div className="registerButton">
+                            <span className="subText">New User?</span>
+                            <Link to="/register">
+                                <div className="createButton">
+                                     Create an account
+                                </div>
+                            </Link>
+                        </div>
                 </div>
                 <div className="column form" >
                     <TextField
@@ -182,12 +189,6 @@ const Login = (props) => {
                  <a className="link" href="https://support.google.com/chrome/answer/6130773?hl=en-GB" >Learn more</a></div>
                 <div className='buttonHeadLogin'>
                     <div className="row " style={{justifyContent:'space-between'}}>
-                        <Link to="/register">
-                            <div className="createButton">
-                                Create account
-                            </div>
-                        </Link>
-
                         <Button variant="contained" className="loginButton" onClick={login}>
                             Login
                         </Button>

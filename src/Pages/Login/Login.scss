@@ -18,11 +18,16 @@
             padding-bottom: 0;
             padding-top: 16px;
             font-family: "Google Sans", "Noto Sans Myanmar UI", arial, sans-serif;
-            font-size: 24px;
+            font-size: 30px;
             font-weight: 400;
             line-height: 1.3333;
             margin-bottom: 0;
             margin-top: 0;
+        }
+        .registerButton{
+            display: flex;
+            align-items: flex-start;
+            margin: 10px 0px 0px 0px;
         }
         .subText {
             color: #202124;
@@ -32,6 +37,7 @@
             line-height: 1.5;
             padding-bottom: 0;
             padding-top: 8px;
+            margin: -10px 5px 0px 0px;
         }
         .form {
             padding-top: 24px;
@@ -63,6 +69,7 @@
                 letter-spacing: 0.25px;
                 text-decoration: none;
                 outline: none;
+                margin: 5px 0px 0px 0px;
                 cursor: pointer;
             }
             .loginButton {

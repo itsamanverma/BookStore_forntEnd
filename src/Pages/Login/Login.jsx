@@ -12,6 +12,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
+import GoogleLogin from '../../components/SocialLogin';
 import user_service from '../../services/user_service';
 
 const Login = (props) => {
@@ -199,9 +200,10 @@ const Login = (props) => {
                         </Button>
                     </div>
                 </div>
-                <div className="socialAccess">
-                     <hr class="RuleWithText EmailPage__social-separator mt-xs-3" data-content="Or"></hr>
-                </div>
+                {/* <div className="SocialLogin">
+                    <GoogleLogin
+                    changeLoginStatus={this.changeLoginStatus} />
+                </div> */}
             </div>
         </div>
     );

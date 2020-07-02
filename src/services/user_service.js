@@ -26,6 +26,11 @@ class UserService {
         }
         return this.axiosService.post(url, data, true, token);
     }
+    socialLogin(data){
+        let url = config.url + 'sociallogin'
+        return this.axiosService.post(url, data, false);
+    }
+
     uploadProfile(data) {
 
         let url = config.url + 'uploadProfileURL'

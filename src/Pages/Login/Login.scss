@@ -84,6 +84,39 @@
                 font-weight: 500;
                 text-transform: none;
             }
+            .socialAccess{
+
+                .EmailPage__social-separator {
+                    margin-bottom: 10px;
+                }
+                .RuleWithText {
+                    border: 0;
+                    height: auto;
+                    outline: 0;
+                    position: relative;
+                    text-align: center;
+                }
+                .RuleWithText:before {
+                    background: #eaeaea;
+                    content: "";
+                    height: 1px;
+                    left: 0;
+                    position: absolute;
+                    top: 50%;
+                    width: 100%;
+                }
+                .RuleWithText:after {
+                    background-color: #fff;
+                    color: #4b4b4b;
+                    content: attr(data-content);
+                    display: inline-block;
+                    font-size: 17px;
+                    font-weight: 300;
+                    line-height: 21px;
+                    padding: 0 .5em;
+                    position: relative;
+                }
+            }
         }
     }
 }
@@ -98,3 +131,11 @@
         }
     }
 } 
+
+@media screen and (min-width: 304px) {
+    .loginMain{
+        .mt-xs-3{
+             margin-top: 24px !important;
+        }
+    }
+}

@@ -189,17 +189,19 @@ const Login = (props) => {
                  <a className="link" href="https://support.google.com/chrome/answer/6130773?hl=en-GB" >Learn more</a></div>
                 <div className='buttonHeadLogin'>
                     <div className="row " style={{justifyContent:'space-between'}}>
+                        <Link to="/forgot">
+                            <div className="createButton" style={{padding:'5px 0'}}>
+                                forgot account
+                            </div>
+                        </Link>
                         <Button variant="contained" className="loginButton" onClick={login}>
                             Login
                         </Button>
                     </div>
-                    <Link to="/forgot">
-                        <div className="createButton" style={{padding:'5px 0'}}>
-                            forgot account
-                        </div>
-                    </Link>
                 </div>
-
+                <div className="socialAccess">
+                     <hr class="RuleWithText EmailPage__social-separator mt-xs-3" data-content="Or"></hr>
+                </div>
             </div>
         </div>
     );

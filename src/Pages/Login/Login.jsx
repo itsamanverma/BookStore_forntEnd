@@ -12,7 +12,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
-import GoogleLogin from '../../components/SocialLogin';
+import GoogleLogin from '../../components/SocialLogin/GoogleLogin';
 import user_service from '../../services/user_service';
 
 const Login = (props) => {
@@ -22,9 +22,13 @@ const Login = (props) => {
         emailError: '',
         passwordError: '',
         error: false,
-        showPassword: false
+        showPassword: false,
+        isLoggedIn: false,
     });
 
+    let changeLoginStatus = () => setValues({
+        isLoggedIn: true,
+    });
 
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
@@ -111,9 +115,9 @@ const Login = (props) => {
             return;
         }
         else {
-            // props.loader(true);
             user_service.login(values).then((data) => {
                 console.log('data after login', data);
+                // props.loader(true);
                 const obj = data.data;
                 props.snackbar(true, obj.message);
                 localStorage.setItem('name', obj.data.firstName + ' ' + obj.data.lastName);
@@ -200,10 +204,10 @@ const Login = (props) => {
                         </Button>
                     </div>
                 </div>
-                {/* <div className="SocialLogin">
+                <div className="SocialLogin">
                     <GoogleLogin
-                    changeLoginStatus={this.changeLoginStatus} />
-                </div> */}
+                    changeLoginStatus={changeLoginStatus} />
+                </div>
             </div>
         </div>
     );

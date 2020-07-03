@@ -13,6 +13,9 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import user_service from '../../services/user_service';
+import { FormGroup,FormControlLabel,Checkbox } from '@material-ui/core/';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 
 const Login = (props) => {
     const [values, setValues] = useState({
@@ -203,9 +206,23 @@ const Login = (props) => {
                             Login
                         </Button>
                     </div>
-                    <div className="termcondition">
-                        <p>Protected by reCAPTCHA and subject to the Google <a href="/policy">Privacy Policy</a> and <a href="/trems">Terms of Use</a>.</p>
-                    </div>
+                    <div className="checkbox">
+                        <FormGroup>
+                            <FormControlLabel
+                                control={
+                                <Checkbox
+                                    icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
+                                    checkedIcon={<CheckBoxIcon fontSize="small" />}
+                                    name="checkedI"
+                                />
+                                }
+                                label="Please contact me via email"
+                            />
+                        </FormGroup>
+                            <div className="termcondition">
+                                <p>Protected by reCAPTCHA and subject to the Google <a href="/policy">Privacy Policy</a> and <a href="/trems">Terms of Use</a>.</p>
+                            </div>
+                    </div> 
                 </div>
                 <div className="SocialLogin">
                 </div>

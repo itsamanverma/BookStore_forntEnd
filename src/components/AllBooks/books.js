@@ -129,7 +129,7 @@ export class Books extends Component {
             booksArray: booksArray,
         }
     }
-
+ 
     _handleSelectFilter = (event) => {
         this.setState({
             filter: event.target.value
@@ -191,4 +191,4 @@ export class Books extends Component {
     }
 }
 
-export default Books
+export default Books;

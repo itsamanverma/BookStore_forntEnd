@@ -1,7 +1,7 @@
 .loginMain {
     height: 100%;
     .loginCard {
-        width: 368px;
+        width: 400px;
         border-radius: 8px;
         border: 1px solid #dadce0;
         display: block;
@@ -10,7 +10,7 @@
         margin: 40px auto;
         -webkit-transition: 0.2s;
         transition: 0.2s;
-        padding: 48px 40px 36px;
+        padding: 50px 48px 38px;
         height: fit-content;
         background-color: lightcyan;
         .headText {
@@ -27,7 +27,7 @@
         .registerButton{
             display: flex;
             align-items: flex-start;
-            margin: 10px 0px 0px 0px;
+            margin: 5px 0px 0px 0px;
         }
         .subText {
             color: #202124;
@@ -84,8 +84,10 @@
                 font-weight: 500;
                 text-transform: none;
             }
-            .termcondition p{
-                margin-top: 10px;
+            .switchdiv {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     }

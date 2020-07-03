@@ -53,7 +53,6 @@ class Register extends Component {
             showPassword: false,
             open: false,
             snakbarmsg: '',
-            checked: false,
             errors: {
                 firstName: '',
                 lastName: '',
@@ -179,9 +178,9 @@ class Register extends Component {
         this.setState({ open: false });
     }
 
-    handleChange = () => {
-        setState({ checked: true });
-    };
+    // handleChange = () => {
+    //     setState({ checked: true });
+    // };
     render() {
         const { errors, open } = this.state;
         return (
@@ -332,7 +331,6 @@ class Register extends Component {
                                         icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
                                         checkedIcon={<CheckBoxIcon fontSize="small" />}
                                         name="checkedI"
-                                        onChange={this.handleChange}
                                     />
                                     }
                                     label="Please contact me via email"

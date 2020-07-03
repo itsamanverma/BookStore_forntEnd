@@ -13,9 +13,9 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import user_service from '../../services/user_service';
-import { FormGroup,FormControlLabel,Checkbox } from '@material-ui/core/';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 const Login = (props) => {
     const [values, setValues] = useState({
@@ -26,6 +26,10 @@ const Login = (props) => {
         error: false,
         showPassword: false,
         isLoggedIn: false,
+    });
+
+    const [state, setState] = React.useState({
+        checked: true,
     });
 
     const changeLoginStatus = () => {
@@ -41,6 +45,10 @@ const Login = (props) => {
 
         // },1000)
     };
+    const handleChangeSwitch = (event) => {
+        setState({ ...state, [event.target.name]: event.target.checked });
+      };
+
     const handleClickShowPassword = () => {
         // this.setState({ showPassword: !this.state.showPassword })
         setValues({ ...values, showPassword: !values.showPassword });
@@ -206,19 +214,20 @@ const Login = (props) => {
                             Login
                         </Button>
                     </div>
-                    <div className="checkbox">
-                        <FormGroup>
-                            <FormControlLabel
-                                control={
-                                <Checkbox
-                                    icon={<CheckBoxOutlineBlankIcon fontSize="small" />}
-                                    checkedIcon={<CheckBoxIcon fontSize="small" />}
-                                    name="checkedI"
+                    <div className="switchdiv">
+                            <FormGroup row>
+                                <FormControlLabel
+                                    control={
+                                    <Switch
+                                        checked={state.checked}
+                                        onChange={handleChangeSwitch}
+                                        name="checked"
+                                        color="primary"
+                                    />
+                                    }
+                                    label="Stay signed in"
                                 />
-                                }
-                                label="Please contact me via email"
-                            />
-                        </FormGroup>
+                            </FormGroup>
                             <div className="termcondition">
                                 <p>Protected by reCAPTCHA and subject to the Google <a href="/policy">Privacy Policy</a> and <a href="/trems">Terms of Use</a>.</p>
                             </div>

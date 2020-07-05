@@ -4,7 +4,7 @@ class CustomerDetails extends Component {
     render() {
         return (
             <div>
-                CustomerDetails
+                CustomerDetails 
             </div>
         );
     }

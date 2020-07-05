@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { AppBar } from '@material-ui/core'
+import { AppBar, Button } from '@material-ui/core'
 import './dashboard.css';
 import book from '../../assets/open.svg'
 import shoping from '../../assets/shopping-cart-icon-shopping-cart-icon-by_vexels.png'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
+
 class Dashboard extends Component {
     constructor(props) {
         super(props)
@@ -28,7 +29,12 @@ class Dashboard extends Component {
                         <label className="Cart">Cart</label>
                     </div>
                     <div>
-                        <img id="add-shoping" src={shoping} alt='add_shoping' />
+                        <Link to='/cart' className="ml-auto" label='Cart'>
+                            <Button>
+                                <img id="add-shoping" src={shoping} alt='add_shoping' />
+                                <i className="fas fa-cart-plus"></i>
+                            </Button>
+                        </Link>
                     </div>
                 </AppBar>
             </div>

@@ -5,6 +5,7 @@ import './books.css';
 
 //inplace of backend data used this array.
 let booksArray = [{
+    id: 1,
     name: "Don't Make me think",
     author: "Steve Krug",
     price: 1500,
@@ -13,6 +14,7 @@ let booksArray = [{
     title: "Don't Make Me Think is a book by Steve Krug about human–computer interaction and web usability. The book's premise is that a good software program or web site should let users accomplish their intended tasks as easily and directly as possible. Krug points out that people are good at satisficing, or taking the first available solution to their problem, so design should take advantage of this. "
 },
 {
+    id: 2,
     name: "The Help",
     author: "‎Kathryn Stockett",
     price: 1200,
@@ -21,6 +23,7 @@ let booksArray = [{
     title: "The Help is a 2009 novel by American author Kathryn Stockett.The story is about African Americans working in white households in Jackson, Mississippi, during the early 1960s. A USA Today article called it one of the 'summer sleeper hits'"
 },
 {
+    id: 3,
     name: "The Perception",
     author: "Aman Verma",
     price: 2000,
@@ -29,6 +32,7 @@ let booksArray = [{
     title: 'perception, in psychology, mental organization and interpretation of sensory information. The Gestalt psychologists studied extensively the ways in which people organize and select from the vast array of stimuli that are presented to them'
 },
 {
+    id: 4,
     name: "Attitude is Everything",
     author: "Rhonda Byrne",
     price: 4000,
@@ -38,6 +42,7 @@ let booksArray = [{
 
 },
 {
+    id: 5,
     name: "The Help",
     author: "‎Kathryn Stockett",
     price: 1200,
@@ -46,6 +51,7 @@ let booksArray = [{
     title: "The Help is a 2009 novel by American author Kathryn Stockett.The story is about African Americans working in white households in Jackson, Mississippi, during the early 1960s. A USA Today article called it one of the 'summer sleeper hits'"
 },
 {
+    id: 6,
     name: "The Perception",
     author: "Aman Verma",
     price: 2000,
@@ -55,6 +61,7 @@ let booksArray = [{
 
 },
 {
+    id: 7,
     name: "Attitude is Everything",
     author: "Rhonda Byrne",
     price: 4000,
@@ -63,6 +70,7 @@ let booksArray = [{
     title: "Attitude is Everything is a book based on Jeff Keller's journey of being a motivational speaker. ... He decides to make a gradual transition and start working as a full-time motivational orator in 1992. This novel is divided into three parts, Success Begins in the Mind, Watch Your Words, and Heaven Helps Those Who Act"
 },
 {
+    id: 8,
     name: "The Road to React",
     author: "Robin Wieruch",
     price: 1308,
@@ -123,7 +131,7 @@ function searchingFor(search) {
 export class Books extends Component {
     constructor(props) {
         super(props)
-
+        this.wrapper = React.createRef();
         this.state = {
             filter: "",
             booksArray: booksArray,
@@ -140,9 +148,9 @@ export class Books extends Component {
     _getAllBookInfo = () => {
         return this.state.booksArray.filter(searchingFor(this.props.searchBook)).map((key, index) => {
             return (
-                <MuiThemeProvider theme={theme}>
-                    <Card key={key.name} >
-                    <Tooltip title={key.title} placement="top-start" label='Book Detail'> 
+                <MuiThemeProvider theme={theme} ref={this.wrapper}>
+                    <Card key={key.name}>
+                    <Tooltip title={key.title} placement="top-start" label='Book Detail' > 
                      <div className="image-c">
                          <img src={require(`../../${key.image}.jpg`)} alt="book" className="image-dimention"></img>
                      {!key.isAvailable && <span className="book-avaialability">OUT OF STOCK</span>}

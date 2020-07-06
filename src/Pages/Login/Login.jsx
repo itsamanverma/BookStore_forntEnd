@@ -32,11 +32,11 @@ const Login = (props) => {
         checked: true,
     });
 
-    const changeLoginStatus = () => {
-        setValues({
-            isLoggedIn: true
-        })
-    }
+    // const changeLoginStatus = () => {
+    //     setValues({
+    //         isLoggedIn: true
+    //     })
+    // }
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
 

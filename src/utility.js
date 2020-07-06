@@ -16,8 +16,20 @@ module.exports = {
         return regex.test(value);
     },
     isDataValid(value) {
-        let dateRegex = '^([0-9]{4})-([0-9]{2})-([0-9]{2})$'
+        let dateRegex = '^(?[0-9]{4})?[-.]?([0-9]{2})[-.]?([0-9]{2})$'
         let regex = new RegExp(dateRegex);
+        return regex.test(value);
+    },
+
+    isPhoneNoValid(value) {
+        let phoneNoRegex = '^([1-9]{1}[0-9]{9})$'
+        let regex = new RegExp(phoneNoRegex);
+        return regex.test(value);
+    },
+
+    isPincodeValid(value) {
+        let pincodeRegex = '^([2-9]{1}[0-9]{5})$'
+        let regex = new RegExp(pincodeRegex);
         return regex.test(value);
     },
 

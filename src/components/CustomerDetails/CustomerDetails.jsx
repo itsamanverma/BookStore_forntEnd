@@ -114,7 +114,7 @@ class CustomerDetails extends Component {
                 }
                 break;
             case 'Pincode':
-                if (value.length <= 6 ) {
+                if (value.length < 6 ) {
                     errors.Pincode = 'Pincode must be 6 digit long!';
                     errors.error = true;
 
@@ -149,7 +149,7 @@ class CustomerDetails extends Component {
                     errors.Address = 'Address must be 3 characters long!';
                     errors.error = true;
                 }
-                else if (!utility.isStringValid(value)) {
+                else if (!utility.isAddressValid(value)) {
                     errors.Address = 'Address is invalid'
                     errors.error = true;
 
@@ -207,7 +207,10 @@ class CustomerDetails extends Component {
 
                 <Card className="card row">
                     <div className="CardI">
-                            <div className="paddingTopDown createTxt">Customer Details</div>
+                                <div className="Editdiv">
+                                    <div className="paddingTopDown createTxt">Customer Details</div>
+                                    <span className="Edit"><a href="\Edit">Edit</a></span>
+                                </div>
                             <div className="twoTextField" >
                                 <div className="column divField" >
                                     <TextField
@@ -265,19 +268,19 @@ class CustomerDetails extends Component {
                                         className='formField'
                                         name="Locality"
                                         onChange={this.setValue}
-                                        error={errors.Pincode.length >6}
+                                        error={errors.Locality.length > 0}
                                         autoComplete='off'
                                     />
-                                    <span className='error'>{errors.Pincode}</span>
+                                    <span className='error'>{errors.Locality}</span>
                                 </div>
                             </div>
                             <div className="twoTextField" >
-                                <div className="column divField" >
+                                <div className="column divFieldAddress" >
                                     <TextField
                                         id="outlined-dense-multiline5"
                                         label="Address"
                                         margin="dense"
-                                        error={errors.Address.length > 60}
+                                        error={errors.Address.length > 90}
                                         name="Address"
                                         value={this.state.Address}
                                         onChange={this.setValue}
@@ -287,6 +290,40 @@ class CustomerDetails extends Component {
                                     />
                                     <span className='error'>{errors.Address}</span>
                                 </div>
+                            </div>
+                            <div className="twoTextField" >
+                                <div className="column divField" >
+                                    <TextField
+                                        id="outlined-dense-multiline6"
+                                        label="city/Town"
+                                        margin="dense"
+                                        error={errors.city.length > 0}
+                                        name="Pincode"
+                                        value={this.state.city}
+                                        onChange={this.setValue}
+                                        variant="outlined"
+                                        className='formField'
+                                        autoComplete='off'
+                                    />
+                                    <span className='error'>{errors.city}</span>
+                                </div>
+                                <div className="column divField">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+                                    <TextField
+                                        id="outlined-dense-multiline7"
+                                        label="Landmark"
+                                        margin="dense"
+                                        variant="outlined"
+                                        className='formField'
+                                        name="Landmark"
+                                        onChange={this.setValue}
+                                        error={errors.Landmark.length >0}
+                                        autoComplete='off'
+                                    />
+                                    <span className='error'>{errors.Landmark}</span>
+                                </div>
+                            </div>
+                            <div className="twoTextFeild">
+                                <div>Type</div>
                             </div>
                     </div>
                 </Card>

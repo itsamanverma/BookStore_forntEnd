@@ -22,7 +22,7 @@ module.exports = {
     },
 
     isPhoneNoValid(value) {
-        let phoneNoRegex = '^([1-9]{1}[0-9]{9})$'
+        let phoneNoRegex = '^([0]{1}[1-9]{1}[0-9]{9})$'
         let regex = new RegExp(phoneNoRegex);
         return regex.test(value);
     },
@@ -30,6 +30,11 @@ module.exports = {
     isPincodeValid(value) {
         let pincodeRegex = '^([2-9]{1}[0-9]{5})$'
         let regex = new RegExp(pincodeRegex);
+        return regex.test(value);
+    },
+    isAddressValid(value) {
+        let addressRegex = '^[A-Za-z0-9,]+$'
+        let regex = new RegExp(addressRegex);
         return regex.test(value);
     },
 

@@ -98,6 +98,13 @@
 .divField{
     width: 49%;
 }
+.divFieldAddress {
+    width: 99%;
+}
+.Editdiv{
+    display: flex;
+    justify-content: space-between;
+}
 .password-div{
     width: 99%;    
 }
